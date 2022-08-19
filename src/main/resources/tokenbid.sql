@@ -5,7 +5,7 @@ create table if not exists users(
 	first_name varchar(50) not null,
 	last_name varchar(50) not null,
 	email varchar(100) not null unique,
-	tokens int default 0 check(tokens >= 0)
+	tokens int default 0 check(tokens >= 0),
 	email_verified boolean default false
 );
 
@@ -23,8 +23,6 @@ create table if not exists auctions(
 	auction_id serial primary key,
 	item_id int not null,
 	starting_bid int not null check(starting_bid >= 0),
-	current_bid int not null check(current_bid >= 0),
-	previous_bid int not null check(previous_bid >= 0),
 	status varchar(50) default 'In Progress',
 	start_time timestamp,
 	end_time timestamp,
